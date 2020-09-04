@@ -14,7 +14,7 @@ import java.util.List;
 
 import static Constant.ConstantVariables.*;
 
-public class BasePage {
+public class Base {
     private static WebDriver driver;
     public WebDriverWait wait;
 
