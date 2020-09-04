@@ -34,7 +34,7 @@ public class Base {
         driver.get(TestUrl);
         System.out.println(driver.getTitle());
         driver.manage().window().maximize();
-        wait=new WebDriverWait(driver,20000);
+        wait=new WebDriverWait(driver,15000);
 
     }
 
@@ -87,10 +87,10 @@ public class Base {
 
     }
 
-//    @After
-//    public void closeDriver()
-//    {
-//
-//        driver.quit();
-//    }
+    @After
+    public void closeDriver()
+    {
+
+        driver.quit();
+    }
 }

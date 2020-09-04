@@ -6,6 +6,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+import java.util.Random;
+
 import static Constant.ConstansButton.*;
 import static Constant.ConstansButton.ButtonDelete;
 import static Constant.ConstanstInput.*;
@@ -32,8 +35,6 @@ public class MainTest extends Base {
         elementSendKeys(By.id(InputUsername), "cv.semihcan@gmail.com");
         elementSendKeys(By.id(InputPassword), "Kyk.17231650");
         elementClick(By.id(ButtonLogin));
-
-
     }
 @Test
     public void searchBilgisayar() throws InterruptedException {
@@ -43,12 +44,6 @@ public class MainTest extends Base {
         elementSendKeysEnter(By.cssSelector(InputSearch), Keys.ENTER);
         sleep(3000);
 
-
-        String passiveLink ="/html/body/div[3]/div/div/div/div[2]/div[2]/div/div[3]/div[1]/a";
-        String activeLink="/html/body/div[3]/div/div/div/div[2]/div[2]/div/div[1]/div[1]/a";
-
-
-
     }
 @Test
     public void randomItemSelect() throws InterruptedException {
@@ -56,16 +51,15 @@ public class MainTest extends Base {
         sleep(3000);
 
         /*  BURADA HATA VAR  */
+        List<WebElement> listings = driver.findElements(By.cssSelector("div[class='p-card-wrppr']>div>a"));
+        Random r = new Random();
+        int randomValue=0;
+        randomValue = r.nextInt(listings.size());
+        listings.get(randomValue).click();
 
+        /*   Randomu listede hata aldığım için; List elementini yorum satırı haline getirip alttaki kodu  çalıştırabilirsiniz   */
+      //   elementClick(By.xpath("/html/body/div[3]/div/div/div/div[2]/div[2]/div/div[3]/div[1]/a"));
 
-        // elementClick(By.xpath("/html/body/div[3]/div/div/div/div[2]/div[2]/div/div[3]/div[1]/a"));
-
-        System.out.println("Başarlı");
-
-
-
-//        String count = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/div/div/span[2]")).getText();
-//        System.out.println(count);
     }
 @Test
     public void basketItemAdded() throws InterruptedException{
@@ -75,24 +69,21 @@ public class MainTest extends Base {
         WebElement ProductListPrice = driver.findElement(By.cssSelector("span[class='prc-slg']"));
         String productprice= ProductListPrice.getText();
         System.out.println(productprice+"Ürün Eklemedeki Fiyatı");
-
         elementClick(By.cssSelector(ButtonAddBasket));
         sleep(3000);
-
         elementClick(By.id(BasketItem));
-
         WebElement BasketPrice = driver.findElement(By.cssSelector("span[class='prc-slg']"));
         String basketprice= BasketPrice.getText();
         System.out.println(basketprice+": Sepetteki Fiyatı");
         sleep(3000);
-        /* Listedki ürün ile Sepetteki Ürün Fiyatı Karşılaştırması*/
 
+        /* Listedki ürün ile Sepetteki Ürün Fiyatı Karşılaştırması*/
         Assert.assertSame(ProductListPrice,BasketPrice);
     }
 @Test
     public void basketProductIncrease() throws InterruptedException{
     basketItemAdded();
-        Boolean ButtonPassiveCheck = isElementDisplayed(By.xpath("/html/body/div[3]/div[2]/div[2]/section/section[1]/div[2]/div/div/div[2]/div[2]/div[3]/div[1]/div/button[2]"));
+        Boolean ButtonPassiveCheck = isElementDisplayed(By.xpath(ButtonPassive));
         System.out.println(ButtonPassiveCheck);
         if (ButtonPassiveCheck ==true)
         {
