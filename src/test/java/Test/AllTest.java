@@ -56,12 +56,13 @@ public class AllTest  extends BasePage{
 
         sleep(3000);
 
+        /*  BURADA HATA VAR  */
         List<WebElement> list = driver.findElements(By.cssSelector("div[class='p-card-wrppr']>div>a"));
         Random r = new Random();
         int randomValue=0;
         randomValue = r.nextInt(list.size());
         list.get(randomValue).click();
-        elementClick(By.xpath("/html/body/div[3]/div/div/div/div[2]/div[2]/div/div[3]/div[1]/a"));
+       // elementClick(By.xpath("/html/body/div[3]/div/div/div/div[2]/div[2]/div/div[3]/div[1]/a"));
 
 
 
@@ -75,15 +76,21 @@ public class AllTest  extends BasePage{
     public void basketItemAdded() throws InterruptedException{
 
         sleep(3000);
+        /*  BURADA HATA VAR  */
         WebElement ProductListPrice = driver.findElement(By.cssSelector("span[class='prc-slg']"));
         String productprice= ProductListPrice.getText();
         System.out.println(productprice+"Ürün Eklemedeki Fiyatı");
 
         elementClick(By.cssSelector(ButtonAddBasket));
-        sleep(4000);
+        sleep(3000);
 
         elementClick(By.id(BasketItem));
+
+        WebElement BasketPrice = driver.findElement(By.cssSelector("span[class='prc-slg']"));
+        String basketprice= BasketPrice.getText();
+        System.out.println(basketprice+": Sepetteki Fiyatı");
         sleep(3000);
+
     }
 
     public void basketProductIncrease() throws InterruptedException{
