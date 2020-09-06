@@ -90,10 +90,10 @@ public class Base {
 
     }
 
-//    @After
-//    public void closeDriver()
-//    {
-//
-//        driver.quit();
-//    }
+    @After
+    public void closeDriver()
+    {
+
+        driver.quit();
+    }
 }
