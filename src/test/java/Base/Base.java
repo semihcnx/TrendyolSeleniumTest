@@ -1,6 +1,7 @@
 package Base;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -33,6 +34,9 @@ public class Base {
         driver=new ChromeDriver();
         driver.get(TestUrl);
         System.out.println(driver.getTitle());
+        //URL Kontrolü
+        //String URL = driver.getCurrentUrl();
+        //Assert.assertEquals(URL, TestUrl );
         driver.manage().window().maximize();
         wait=new WebDriverWait(driver,15000);
 
@@ -53,7 +57,6 @@ public class Base {
     {
         isElementDisplayed(Locater);
         List<WebElement> listings = (List<WebElement>) driver.findElements(Locater);
-
 
         return (WebElement) listings;
 
@@ -87,10 +90,10 @@ public class Base {
 
     }
 
-    @After
-    public void closeDriver()
-    {
-
-        driver.quit();
-    }
+//    @After
+//    public void closeDriver()
+//    {
+//
+//        driver.quit();
+//    }
 }
