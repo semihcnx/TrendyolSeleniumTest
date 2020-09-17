@@ -34,8 +34,8 @@ public class MainTest extends Base {
 
         elementClick(By.id(ButtonAccount));
         sleep(3000);
-        elementSendKeys(By.id(InputUsername), "cv.semihcan@gmail.com");
-        elementSendKeys(By.id(InputPassword), "Kyk.17231650");
+        elementSendKeys(By.id(InputUsername), "USERNAME");
+        elementSendKeys(By.id(InputPassword), "PASSWORD");
         elementClick(By.id(ButtonLogin));
 
         /*
